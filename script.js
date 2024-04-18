@@ -37,7 +37,11 @@ const start = () => {
 		}).replace(', ', ':');
 		
 		for (let chunkPos in timeString.split(':')) {
-			const chunk = timeString.split(':')[chunkPos];
+			let chunk = timeString.split(':')[chunkPos];
+			
+			if (chunkPos == 1 && chunk == '24')
+				chunk = '00'
+			
 			const without0 = chunk.replace(/^[0:]/g,'')
 			
 			for (let charPos in chunk) {
